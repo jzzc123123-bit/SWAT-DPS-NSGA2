@@ -44,7 +44,7 @@ Compared with native SWAT2016 Rev.664, these versions add command-line control i
 
 ## Installation
 
-Python 3.8 or newer is recommended.
+Python 3.9 is recommended (tested with Python 3.9.25).
 
 ```bash
 pip install -r requirements.txt
