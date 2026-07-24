@@ -112,4 +112,4 @@ Generated worker folders, logs, executables, and result files are intentionally 
 
 ## Notes
 
-This repository is a method-code release together with the raw SWAT input projects used in the study (see `RawData/`). It does not include plotting scripts or paper-figure reproduction files. Update the paths in the optimization scripts before running.
+This repository is a method-code release together with the raw SWAT input projects used in the study (see `RawData/`).  Update the paths in the optimization scripts before running.
