@@ -1,0 +1,2 @@
+﻿n_generations,tail_n,first_gen_feasible_ratio,last_gen_feasible_ratio,J1_min_tail_mean_improve,J1_min_tail_max_improve,J2_min_tail_mean_improve,J2_min_tail_max_improve,J3_min_tail_mean_improve,J3_min_tail_max_improve,J4_min_tail_mean_improve,J4_min_tail_max_improve,J5_min_tail_mean_improve,J5_min_tail_max_improve
+30,10,0.16,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.003442738505231302,0.015267663033106116
