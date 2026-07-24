@@ -1,4 +1,4 @@
-﻿# SWAT-DPS-NSGA2
+# SWAT-DPS-NSGA2
 
 SWAT-DPS-NSGA2 provides method code for coupling a modified SWAT2016 Rev.664 source code with NSGA-II to optimize dynamic point-source nitrogen control strategies.
 
@@ -15,11 +15,16 @@ SWAT-DPS-NSGA2/
 ├─ swat_nsga2_dps_b3.py
 ├─ swat_nsga2_dps_b4.py
 ├─ swat_nsga2_ndb.py
-└─ swat_source/
-   ├─ dps_b1/
-   ├─ dps_b3/
-   ├─ dps_b4/
-   └─ ndb/
+├─ swat_source/
+│  ├─ dps_b1/
+│  ├─ dps_b3/
+│  ├─ dps_b4/
+│  └─ ndb/
+└─ RawData/
+   ├─ TxtInOutB=1/
+   ├─ TxtInOutB=3/
+   ├─ TxtInOutB=4/
+   └─ TxtInOutbase10000/
 ```
 
 ## Optimization scripts
@@ -41,6 +46,25 @@ The `swat_source/` directory contains four modified SWAT source-code versions:
 - `swat_source/ndb/`: non-feedback direct-control benchmark version.
 
 Compared with native SWAT2016 Rev.664, these versions add command-line control inputs, annual DPS state extraction, dynamic point-source nitrogen-load updates, and `*_dps_eval.out` output for optimization.
+
+## Raw data (SWAT TxtInOut projects)
+
+The `RawData/` directory contains the four complete SWAT `TxtInOut` input projects used by the optimization scripts, one per control strategy:
+
+- `RawData/TxtInOutB=1/`: input project for the one-dimensional DPS strategy (DPS-B1, ~6,590 files).
+- `RawData/TxtInOutB=3/`: input project for the three-dimensional DPS strategy (DPS-B3, ~6,597 files).
+- `RawData/TxtInOutB=4/`: input project for the four-dimensional DPS strategy (DPS-B4, ~6,600 files).
+- `RawData/TxtInOutbase10000/`: input project for the non-feedback direct-control benchmark (`ndb`, ~6,592 files).
+
+Each folder is a standard ArcSWAT-generated `TxtInOut` working directory containing the full set of SWAT input files (`.sub`, `.hru`, `.mgt`, `.sol`, `.gw`, `.rte`, `.chm`, `.pnd`, `.wgn`, `.wus`, weather data, `file.cio`, etc.). The watershed was delineated with the ArcGIS-SWAT interface; simulations run for 33 years starting in 2005 at a daily time step (`NBYR = 33`, `IYR = 2005`, measured precipitation).
+
+To run an optimization, point the script's `BASE_TEMPLATE_DIR` to the matching folder, e.g.:
+
+```python
+BASE_TEMPLATE_DIR = r"RawData/TxtInOutB=1"   # for swat_nsga2_dps_b1.py
+```
+
+Compiled SWAT executables, model output files (`*.out`), Pareto results, and NSGA-II run configs inside these folders are intentionally excluded from version control (see `.gitignore`); only the model inputs are tracked.
 
 ## Installation
 
@@ -88,4 +112,4 @@ Generated worker folders, logs, executables, and result files are intentionally 
 
 ## Notes
 
-This repository is a method-code release. It does not include a complete SWAT `TxtInOut` project, plotting scripts, or paper-figure reproduction files. Users should prepare their own SWAT input project and update the paths in the optimization scripts before running.
+This repository is a method-code release together with the raw SWAT input projects used in the study (see `RawData/`). It does not include plotting scripts or paper-figure reproduction files. Update the paths in the optimization scripts before running.
