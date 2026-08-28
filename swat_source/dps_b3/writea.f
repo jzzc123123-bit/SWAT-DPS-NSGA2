@@ -190,8 +190,8 @@
 
       integer :: j, k, navg, imo_dps
       
-      integer :: irbf, jdim, kout !irbf£ºRBF »ùº¯Êý±àºÅjdim£º×´Ì¬Î¬±àºÅ
-      !kout£ºÊä³ö±àºÅ;phi_rbf£ºRBF ÏìÓ¦;dist2_rbf£º¾àÀëÆ½·½ºÍ
+      integer :: irbf, jdim, kout !irbfï¼šRBF åŸºå‡½æ•°ç¼–å·jdimï¼šçŠ¶æ€ç»´ç¼–å·
+      !koutï¼šè¾“å‡ºç¼–å·;phi_rbfï¼šRBF å“åº”;dist2_rbfï¼šè·ç¦»å¹³æ–¹å’Œ
       real*8 :: dist2_rbf
       real*8, dimension(dps_nrbf) :: phi_rbf
       
@@ -261,9 +261,9 @@
           if (dps_ready == 1 .and. curyr > nyskip .and.
      &        curyr < myr) then
 
-!           1) ¸ù¾Ýµ±Ç°Äê×´Ì¬¼ÆËãÏÂÒ»Äê²ßÂÔ
+!           1) æ ¹æ®å½“å‰å¹´çŠ¶æ€è®¡ç®—ä¸‹ä¸€å¹´ç­–ç•¥
               
-!     ÏÈËãÃ¿¸ö RBF »ùº¯ÊýÏìÓ¦
+!     å…ˆç®—æ¯ä¸ª RBF åŸºå‡½æ•°å“åº”
             do irbf = 1, dps_nrbf
                dist2_rbf = 0.d0
                do jdim = 1, dps_bdim
@@ -273,7 +273,7 @@
                end do
                phi_rbf(irbf) = exp(-dist2_rbf)
             end do
-           !     ÔÙËãÃ¿¸öÊä³ö
+           !     å†ç®—æ¯ä¸ªè¾“å‡º
             do kout = 1, dps_kout
                dps_u_raw_yr(curyr+1,kout) = dps_a(kout)
                do irbf = 1, dps_nrbf
@@ -295,13 +295,13 @@
             end do
             
             do kout = 1, dps_kout
-            dps_fac_yr(curyr+1,kout) = 1.2d0 - 0.8d0 * 
+            dps_fac_yr(curyr+1,kout) = 1.2d0 - 1.0d0 * 
      &          dps_u_yr(curyr+1,kout)
             end do
             fac_target = dps_fac_yr(curyr+1,1)
             fac_target2 = dps_fac_yr(curyr+1,2)
             fac_target3 = dps_fac_yr(curyr+1,3)
-!           2) ¼ÆËãµ±Ç°ÄêÈý²¿·ÖÔ­Ê¼Äê¸ººÉ£¨kg/year£©
+!           2) è®¡ç®—å½“å‰å¹´ä¸‰éƒ¨åˆ†åŽŸå§‹å¹´è´Ÿè·ï¼ˆkg/yearï¼‰
             lorg_cur = 0.d0
             lno3_cur = 0.d0
             lnh3_cur = 0.d0
@@ -367,7 +367,7 @@
             dps_lorg_raw_yr3(curyr) = lorg_cur3
             dps_lno3_raw_yr3(curyr) = lno3_cur3
             dps_lnh3_raw_yr3(curyr) = lnh3_cur3
-!           3) ¼ÆËãµ½µ±Ç°ÄêÎªÖ¹µÄÀÛ¼ÆÄê¾ù»ù×¼¸ººÉ
+!           3) è®¡ç®—åˆ°å½“å‰å¹´ä¸ºæ­¢çš„ç´¯è®¡å¹´å‡åŸºå‡†è´Ÿè·
             sum_org = 0.d0
             sum_no3 = 0.d0
             sum_nh3 = 0.d0
@@ -444,7 +444,7 @@
             end if
             
 
-!           4) ¼ÆËãÏÂÒ»ÄêÈý²¿·ÖÄ¿±êÄê¸ººÉ£¨kg/year£©
+!           4) è®¡ç®—ä¸‹ä¸€å¹´ä¸‰éƒ¨åˆ†ç›®æ ‡å¹´è´Ÿè·ï¼ˆkg/yearï¼‰
             dps_lorg_target_yr(curyr+1) =
      &          dps_lorg_base_yr(curyr+1) * fac_target
 
@@ -475,7 +475,7 @@
             dps_lnh3_target_yr3(curyr+1) =
      &          dps_lnh3_base_yr3(curyr+1) * fac_target3
 
-!           5) ²»±£ÁôÔÂÐÎÌ¬£¬ÏÂÒ»Äê¸Ä³ÉÈ«Äê¾ùÔÈÈÕÊäÈë
+!           5) ä¸ä¿ç•™æœˆå½¢æ€ï¼Œä¸‹ä¸€å¹´æ”¹æˆå…¨å¹´å‡åŒ€æ—¥è¾“å…¥
             days_next = 365.d0
 
             org_day_next = dps_lorg_target_yr(curyr+1) / days_next
