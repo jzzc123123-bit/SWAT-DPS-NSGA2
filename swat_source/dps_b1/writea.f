@@ -275,7 +275,7 @@
               end do
           
           
-    !           1) ¸ù¾İµ±Ç°Äê×´Ì¬¼ÆËãÏÂÒ»Äê²ßÂÔ
+    !           1) æ ¹æ®å½“å‰å¹´çŠ¶æ€è®¡ç®—ä¸‹ä¸€å¹´ç­–ç•¥
                 !dps_u_raw_yr(curyr+1) = dps_a
                 !do k = 1, dps_nrbf
                 !  dps_u_raw_yr(curyr+1) = dps_u_raw_yr(curyr+1) +
@@ -293,11 +293,11 @@
               
             
               do kk = 1, dps_kout
-                  dps_fac_yr(curyr+1,kk) = 0.4d0 + 0.8d0 * dps_u_yr(curyr+1,kk)
+                  dps_fac_yr(curyr+1,kk) = 1.2d0 - 1.0d0 * dps_u_yr(curyr+1,kk)
                   fac_target  = dps_fac_yr(curyr+1,1)
                   fac_target2 = dps_fac_yr(curyr+1,2)
                   fac_target3 = dps_fac_yr(curyr+1,3)
-    !           2) ¼ÆËãµ±Ç°ÄêÈı²¿·ÖÔ­Ê¼Äê¸ººÉ£¨kg/year£©
+    !           2) è®¡ç®—å½“å‰å¹´ä¸‰éƒ¨åˆ†åŸå§‹å¹´è´Ÿè·ï¼ˆkg/yearï¼‰
                 lorg_cur = 0.d0
                 lno3_cur = 0.d0
                 lnh3_cur = 0.d0
@@ -364,7 +364,7 @@
                 dps_lorg_raw_yr3(curyr) = lorg_cur3
                 dps_lno3_raw_yr3(curyr) = lno3_cur3
                 dps_lnh3_raw_yr3(curyr) = lnh3_cur3
-    !           3) ¼ÆËãµ½µ±Ç°ÄêÎªÖ¹µÄÀÛ¼ÆÄê¾ù»ù×¼¸ººÉ
+    !           3) è®¡ç®—åˆ°å½“å‰å¹´ä¸ºæ­¢çš„ç´¯è®¡å¹´å‡åŸºå‡†è´Ÿè·
                 sum_org = 0.d0
                 sum_no3 = 0.d0
                 sum_nh3 = 0.d0
@@ -441,7 +441,7 @@
                 end if
             
 
-    !           4) ¼ÆËãÏÂÒ»ÄêÈı²¿·ÖÄ¿±êÄê¸ººÉ£¨kg/year£©
+    !           4) è®¡ç®—ä¸‹ä¸€å¹´ä¸‰éƒ¨åˆ†ç›®æ ‡å¹´è´Ÿè·ï¼ˆkg/yearï¼‰
                 dps_lorg_target_yr(curyr+1) =
      &          dps_lorg_base_yr(curyr+1) * fac_target
 
@@ -472,7 +472,7 @@
                 dps_lnh3_target_yr3(curyr+1) =
      &          dps_lnh3_base_yr3(curyr+1) * fac_target3
 
-    !           5) ²»±£ÁôÔÂĞÎÌ¬£¬ÏÂÒ»Äê¸Ä³ÉÈ«Äê¾ùÔÈÈÕÊäÈë
+    !           5) ä¸ä¿ç•™æœˆå½¢æ€ï¼Œä¸‹ä¸€å¹´æ”¹æˆå…¨å¹´å‡åŒ€æ—¥è¾“å…¥
                 days_next = 365.d0
 
                 org_day_next = dps_lorg_target_yr(curyr+1) / days_next
