@@ -286,7 +286,7 @@
             !dps_u_raw_yr(curyr+1) = dps_a
             !do k = 1, dps_nrbf
              ! dps_u_raw_yr(curyr+1) = dps_u_raw_yr(curyr+1) +
-      !&          dps_w(k) * exp(-((dps_z_yr(curyr)-dps_c(k))**2) /
+      !&          dps_w(k) * exp(((dps_z_yr(curyr)-dps_c(k))**2) /
       !&          (dps_r(k)**2))
       !      end do
             do kout = 1, dps_kout
