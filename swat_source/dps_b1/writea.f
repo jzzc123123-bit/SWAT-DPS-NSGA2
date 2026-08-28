@@ -262,7 +262,7 @@
 
               z = dps_z_yr(curyr)     
               do irbf = 1, dps_nrbf
-                  phi_rbf(irbf) = exp(-((z - dps_c(irbf))**2) / (dps_r(irbf)**2))
+                  phi_rbf(irbf) = exp(((z - dps_c(irbf))**2) / (dps_r(irbf)**2))
               end do
     
           
